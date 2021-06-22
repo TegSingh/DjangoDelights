@@ -26,11 +26,14 @@ class RecipeRequirement(models.Model):
     # Overwrite the predefined str method of the class
     def __str__(self):
         return self.quantity + " units of " + self.ingredient + " used in " + self.menu_item 
-    
+
+    # Function to calculate revenue per item purchased[Can be used to calculate total revenue per purchase] (in progress..)
+    def calculateRevenue(self):
+        return self.menu_item.price - (self.ingredient.quantity * self.ingredient.unit_price) 
+
 class Purchase(models.Model):
     menu_item = models.ForeignKey(MenuItem, on_delete=models.DO_NOTHING)
     timestamp = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.menu_item + " purchased at " + self.timestamp
-
