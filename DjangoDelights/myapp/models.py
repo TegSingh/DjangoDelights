@@ -1,8 +1,8 @@
 from django.db import models
 
-
 # Create your models here.
 class Ingredient(models.Model):
+
     # Properties of the ingredient method
     name = models.TextField(max_length=30)
     quantity = models.FloatField(default=0.0)
@@ -11,7 +11,7 @@ class Ingredient(models.Model):
 
     # Overwrite the str method
     def __str__(self):
-        return self.quantity + self.unit + "[" + self.unit_price + "per unit] of " + self.name 
+        return str(self.quantity) + " " + self.unit + "[" + str(self.unit_price) + " per unit] of " + self.name 
     
 class MenuItem(models.Model):
     # Each Item in the Menu has a title and price
@@ -26,7 +26,7 @@ class RecipeRequirement(models.Model):
 
     # Overwrite the predefined str method of the class
     def __str__(self):
-        return self.quantity + " units of " + self.ingredient + " used in " + self.menu_item 
+        return str(self.quantity) + " units of " + self.ingredient.name + " used in " + self.menu_item.title 
 
     # Function to calculate revenue per item purchased[Can be used to calculate total revenue per purchase] (in progress..)
     def calculateRevenue(self):
@@ -37,4 +37,4 @@ class Purchase(models.Model):
     timestamp = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return self.menu_item + " purchased at " + self.timestamp
+        return self.menu_item.title + " purchased at " + str(self.timestamp)
