@@ -9,8 +9,6 @@
         <style>
             a:hover {
                 background-color: rgb(98, 106, 114);
-                margin-left: 10px;
-                margin-right: 10px;
             }
         </style>        
     </head>
@@ -21,7 +19,7 @@
             {% block content1 %}
                 <!--Add page specific header messages-->>
             {% endblock %}
-            <div class="navbar navbar-dark bg-dark">
+            <div class="navbar navbar-dark bg-dark" style="width: 100%">
                 <!-- Add the navbar and add links -->
                 <a class="navbar-brand" href="{% url 'home' %}">Home</a>
                 <a class="navbar-brand" href="{% url 'ingredient' %}">Ingredient Inventory</a>

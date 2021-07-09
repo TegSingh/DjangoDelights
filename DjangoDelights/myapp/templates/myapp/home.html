@@ -4,19 +4,23 @@
 {% endblock %}
 {% block content2 %}
     <div class="container">
-        <p>Wanna know what's available along with our latest deals</p>
-        <button class="btn btn-primary">Click Here</button>
+        <button class="btn btn-primary" data-toggle="collapse" data-target="#menu-table" aria-expanded="false" aria-controls="menu-table">Click Here for Menu</button>
     </div>
-    <table>
-        <tr>
-            <th>Menu Item</th>
-            <th>Price</th>
-        </tr>
-        {% for item in menu %}
-        <tr>
-            <td>{{ item.title }}</td>
-            <td>{{ item.price }}</td>
-        </tr>
-        {% endfor %}
-    </table>
+    <br>
+    <div class="collapse multi-collapse" id="menu-table">
+        <table class="table">
+            <thead class="thead-dark">
+                <th scope="col">Menu Item</th>
+                <th scope="col">Price</th>
+            </thead>
+            <tbody>
+                {% for item in menu %}
+                <tr>
+                    <td>{{ item.title }}</td>
+                    <td>{{ item.price }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 {% endblock %}
