@@ -7,19 +7,19 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
         <title>Base Django Delights</title>
     </head>
-    <body>
-        <nav class="navbar navbar-dark bg-light">
-                <h1>Django Delights</h1>
-        </nav>
+    <body style="font-family: Tahoma, sans-serif">
+        {% block content1 %}
+        
+        {% endblock %}
         <nav class="navbar navbar-dark bg-dark">
             <!-- Add the navbar and add links -->
-            <a class="navbar-brand" href="#">Home</a>
-            <a class="navbar-brand" href="#">Ingredient</a>
-            <a class="navbar-brand" href="#">Recipe Requirement</a>
-            <a class="navbar-brand" href="#">Menu Item</a>
-            <a class="navbar-brand" href="#">Purchase</a>
+            <a class="navbar-brand" href="{% url 'home' %}">Home</a>
+            <a class="navbar-brand" href="{% url 'ingredient' %}">Ingredient Inventory</a>
+            <a class="navbar-brand" href="{% url 'purchase' %}">List of Purchases</a>
+            <a class="navbar-brand" href="{% url 'finances' %}">Financial Summary</a>
         </nav>
-        {% block content %}
+        {% block content2 %}
+
         {% endblock %}
     </body>
 </html>
