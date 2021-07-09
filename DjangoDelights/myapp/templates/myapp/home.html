@@ -1,11 +1,22 @@
 {% extends "myapp/base.html" %}
-{% block content1 %}
-    <div class="jumbotron text-center" style="background-color: rgb(15, 54, 88);">
-        <h1 style="color: aliceblue;">Django Delights</h1>
-    </div>
+{% block content1 %}        
+    <p style="color: aliceblue;">Welcome to Django Delights Restaurant. This is my project for CodeCademy Django certification</p>
 {% endblock %}
 {% block content2 %}
     <div class="container">
-    
+        <p>Wanna know what's available along with our latest deals</p>
+        <button class="btn btn-primary">Click Here</button>
     </div>
+    <table>
+        <tr>
+            <th>Menu Item</th>
+            <th>Price</th>
+        </tr>
+        {% for item in menu %}
+        <tr>
+            <td>{{ item.title }}</td>
+            <td>{{ item.price }}</td>
+        </tr>
+        {% endfor %}
+    </table>
 {% endblock %}
