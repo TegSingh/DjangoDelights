@@ -1,10 +1,25 @@
-{% extends "myapp/base.html" %}        
+{% extends "myapp/base.html" %}    
+{% load static %}    
 {% block content1 %}
-    <h1 style="color: aliceblue;">Django Delights</h1>
-    <p>Financial Summary of the Restaurant</p>
+    <p style="color: aliceblue;">Financial Summary of the Restaurant</p>
 {% endblock %}
 {% block content2 %}
-    <div class="container">
-        <!--This is the file for the profit and revenue in the Django Delights restaurant-->
+    <div class="row">
+        <!--Revenue Card-->
+        <div class="card" style="margin-left: 20px; border-radius: 5px;">
+            <img class="card-img-top" src="{% static 'myapp/revenue.PNG' %}" alt="revenue" style="width: 17rem; height: 17rem; margin: 0.5rem;">
+            <div class="card-body">
+                <h5 class="card-title">Revenue for the Restaurant</h5>
+                <p class="card-text">{{ revenue }}</p>
+            </div>
+        </div>
+        <!--Profit Card-->
+        <div class="card" style="margin-left: 20px; border-radius: 5px;">
+            <img class="card-img-top" src="{% static 'myapp/profit.PNG' %}" alt="profit" style="width: 17rem; height: 17rem; margin: 0.5rem;">
+            <div class="card-body">
+                <h5 class="card-title">Final Profit</h5>
+                <p class="card-text">{{ revenue }}</p>
+            </div>
+        </div>
     </div>
 {% endblock %}

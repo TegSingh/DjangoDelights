@@ -22,7 +22,11 @@ def home(request):
 # A view to check all the ingredients in the inventory
 class IngredientsList(ListView):
     Model = Ingredient
+    template_name = 'myapp/ingredients.html'
 
+    def get_queryset(self):
+        return Ingredient.objects.all()
+    
 # A view to add Ingredient in the inventory
 class IngredientsCreate(CreateView):
     Model = Ingredient
@@ -50,12 +54,24 @@ class MenuUpdate(UpdateView):
 # View the purchases made at the restaurant
 class PurchaseList(ListView):
     Model = Purchase
+    template_name = 'myapp/purchase.html'
 
+    def get_queryset(self):
+        return Purchase.objects.all()
+    
 # View to add Purchase
 class PurchaseCreate(CreateView):
     Model = Purchase
 
 # View the profit and revenue for the restaurant [make this function based]
 def finances(request):
-    # Calculate Profit and Revenue 
-    pass
+    # Calculate Revenue and Profit
+    revenue = 0
+    purchase = Purchase.objects.all()
+    for item in purchase: 
+        revenue += item.menu_item.price
+    context = {
+        "revenue": revenue
+    }
+    return render(request, 'myapp/finances.html', context)
+    

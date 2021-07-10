@@ -1,11 +1,28 @@
 {% extends "myapp/base.html" %}
 {% block content1 %}
-    <h1 style="color: aliceblue;">Django Delights</h1>
-    <p>Ingredients Inventory</p>
+    <p style="color: aliceblue;">Ingredients Inventory</p>
 {% endblock %}
     </div>
 {% block content2 %}
-    <div class="container">
-        <!--This the file to list the ingredients available in the inventory-->>
-    </div>
+<div class="container">
+    <!--This is the file that shows the list of ingredients in the inventory-->
+    <table class="table" style="background-color: aliceblue; border-radius: 15px;">
+        <thead class="thead-dark">
+            <th scope="col">Ingredient Name</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Unit</th>
+            <th scope="col">Price per Unit</th>
+        </thead>
+        <tbody>
+            {% for ingredient in ingredient_list %}
+            <tr>
+                <td>{{ ingredient.name }}</td>
+                <td>{{ ingredient.quantity }}</td>
+                <td>{{ ingredient.unit }}</td>
+                <td>{{ ingredient.unit_price }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
 {% endblock %}

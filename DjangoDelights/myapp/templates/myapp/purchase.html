@@ -1,10 +1,23 @@
 {% extends "myapp/base.html" %}    
 {% block content1 %}
-    <h1 style="color: aliceblue;">Django Delights</h1>
-    <p>List of Purchases</p>
+    <p style="color: aliceblue;">List of Purchases</p>
 {% endblock %}
 {% block content2 %}
     <div class="container">
         <!--This is the file to list the purchases that have been made at the restaurant-->
+        <table class="table" style="background-color: aliceblue; border-radius: 15px;">
+            <thead class="thead-dark">
+                <th scope="col">Menu Item</th>
+                <th scope="col">timestamp</th>
+            </thead>
+            <tbody>
+                {% for purchase in purchase_list %}
+                <tr>
+                    <td>{{ purchase.menu_item.title }}</td>
+                    <td>{{ purchase.timestamp }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     </div>
 {% endblock %}
