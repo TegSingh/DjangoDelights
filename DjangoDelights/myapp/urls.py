@@ -6,4 +6,5 @@ urlpatterns = [
     path('ingredient/', views.IngredientsList.as_view(), name='ingredient'),
     path('finances/', views.finances, name='finances'),
     path('purchase/', views.PurchaseList.as_view(), name='purchase'),
+    path("menuitem/create", views.MenuItemCreate, name="menuitem_create"),
 ]
