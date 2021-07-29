@@ -12,12 +12,17 @@
             <thead class="thead-dark">
                 <th scope="col">Menu Item</th>
                 <th scope="col">Price</th>
+                <th scope="col">Action</th>
             </thead>
             <tbody>
                 {% for item in menu %}
                 <tr>
                     <td>{{ item.title }}</td>
                     <td>{{ item.price }}</td>
+                    <td>
+                        <a class="btn btn-primary" href="{% url 'menuitem_update' item.id %}">Update</a>
+                        <a class="btn btn-primary" href="{% url 'menuitem_delete' item.id %}">Delete</a>
+                    </td>
                 </tr>
                 {% endfor %}
             </tbody>
@@ -32,7 +37,7 @@
             {% csrf_token %}
             <input type="text" placeholder="Enter the name of the Menu Item" name="title" class="form-control" style="margin-bottom: 15px;" />
             <input type="number" placeholder="Enter the price of the item" step="0.01" name="price" class="form-control" style="margin-bottom: 15px;" />
-            <button class="btn btn-primary" type="submit">Add new item</button>
+            <button class="btn btn-primary" type="submit">Create item</button>
         </form>
     </div>
 {% endblock %}
