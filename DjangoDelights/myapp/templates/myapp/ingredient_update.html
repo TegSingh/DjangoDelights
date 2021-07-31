@@ -1,6 +1,6 @@
 {% extends "myapp/base.html" %}
 {% block content1 %}
-    <p style="color: aliceblue;">Update Menu Items</p>
+   <p style="color: aliceblue;">Update Ingredients</p>
 {% endblock %}
 {% block content2 %}
 <div class="container">
@@ -9,7 +9,7 @@
         {% csrf_token %}
         <div style="margin: auto 0;">
             {{ form.as_p }}
-            <button class="btn btn-primary" type="submit" style="margin: 0 auto">Update Menu item</button>
+            <button class="btn btn-primary" type="submit" style="margin: 0 auto">Update Ingredients</button>
         </div>
     </form>
 </div>

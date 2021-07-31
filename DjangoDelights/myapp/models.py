@@ -15,7 +15,7 @@ class Ingredient(models.Model):
     
 class MenuItem(models.Model):
     # Each Item in the Menu has a title and price
-    title = models.TextField(max_length=30)
+    title = models.TextField()
     price = models.FloatField(default=0.0)
 
 # This models defines what quantity of an ingredient is a requirement for a particular menu item 

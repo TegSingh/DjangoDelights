@@ -3,8 +3,7 @@ from .models import Ingredient, RecipeRequirement, MenuItem, Purchase
 from django.views.generic import ListView
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.http import Http404
-from .forms import MenuItemUpdateForm
-
+from .forms import MenuItemUpdateForm, IngredientUpdateForm
 # Create your views here.
 
 # Home view to display the menu when the website opens
@@ -18,8 +17,6 @@ def home(request):
     context =  {"menu": menu}
     # render (request name, template name, object to be passed to template)
     return render(request, 'myapp/home.html', context)
-
-
 
 # View to add Menu Items to the inventory
 def MenuItemCreate(request):
@@ -64,16 +61,39 @@ class IngredientsList(ListView):
         return Ingredient.objects.all()
     
 # A view to add Ingredient in the inventory
-class IngredientsCreate(CreateView):
-    model = Ingredient
+def IngredientsCreate(request):
+    if request.method == 'POST':
+        newIngredient = Ingredient()
+        newIngredient.name = request.POST['name']
+        newIngredient.quantity = request.POST['quantity']
+        newIngredient.unit = request.POST['unit']
+        newIngredient.unit_price = request.POST['unit_price']    
+
+        newIngredient.save()
+
+    return redirect('ingredient')
 
 # A view to update Ingredient parameters in inventory
-class IngredientUpdate(UpdateView): 
-    model = Ingredient
+def IngredientsUpdate(request, pk): 
+    updateItem = Ingredient.objects.get(id=pk)
+    form = IngredientUpdateForm(instance=updateItem)
+    
+    if request.method == 'POST': 
+        updateItem.name = request.POST['name']
+        updateItem.quantity = request.POST['quantity']
+        updateItem.unit = request.POST['unit']
+        updateItem.unit_price = request.POST['unit_price'] 
+        updateItem.save()
+        return redirect('ingredient')
+
+    context = {'form': form}
+    return render(request, "myapp/ingredient_update.html", context)
 
 # A view to delete ingredients
-class IngredientsDelete(DeleteView):
-    model = Ingredient
+def IngredientsDelete(request, pk):
+    deletedItem = Ingredient.objects.filter(id=pk)
+    deletedItem.delete()
+    return redirect('ingredient')
 
 # View the purchases made at the restaurant
 class PurchaseList(ListView):

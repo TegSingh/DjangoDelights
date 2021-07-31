@@ -9,5 +9,8 @@ urlpatterns = [
     path('purchase/', views.PurchaseList.as_view(), name='purchase'),
     path("menuitem/create", views.MenuItemCreate, name="menuitem_create"),
     path("menuitem/update/<int:pk>", views.MenuItemUpdate, name="menuitem_update"), 
-    path("menuitem/delete/<int:pk>", views.MenuItemDelete, name="menuitem_delete")
+    path("menuitem/delete/<int:pk>", views.MenuItemDelete, name="menuitem_delete"), 
+    path("ingredient/create", views.IngredientsCreate, name="ingredient_create"),
+    path("ingredient/update/<int:pk>", views.IngredientsUpdate, name="ingredient_update"), 
+    path("ingredient/delete/<int:pk>", views.IngredientsDelete, name="ingredient_delete"), 
 ]
